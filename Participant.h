@@ -4,7 +4,7 @@
     Spring 2025
     CS A250 - C++ 2
 
-    Participant
+    Workshop Hub
 */
 
 #include <string>
