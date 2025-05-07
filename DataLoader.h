@@ -1,5 +1,10 @@
 /*
-  Hauen-Limkilde, Marcus
+    Hauen-Limkilde, Marcus
+
+    Spring 2025
+    CS A250 - C++ 2
+
+    Workshop Hub
 */
 
 #ifndef DATALOADER_H
