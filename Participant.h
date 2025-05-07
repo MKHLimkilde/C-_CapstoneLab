@@ -6,6 +6,8 @@
 
     Workshop Hub
 */
+#ifndef PARTICIPANT_H
+#define PARTICIPANT_H
 
 #include <string>
 
@@ -25,3 +27,4 @@ class Participant
         string firstName;
         string lastName;
 };
+#endif
