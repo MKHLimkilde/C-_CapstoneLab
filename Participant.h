@@ -4,7 +4,7 @@
     Spring 2025
     CS A250 - C++ 2
 
-    Workshop Hub
+    Participant
 */
 #ifndef PARTICIPANT_H
 #define PARTICIPANT_H
@@ -15,16 +15,16 @@ using namespace std;
 
 class Participant
 {
-    public:
-        Participant(int id, string theFirstName, string theLastName);
-        int getID() const;
-        string GetFirstName() const;
-        string GetLastName() const;
-        bool operator<(Participant participant);
+public:
+    Participant(int id, string theFirstName, string theLastName);
+    int getID() const { return id; };
+    string GetFirstName() const { return firstName;  };
+    string GetLastName() const { return lastName;  };
+    bool operator<(Participant participant) { return getID() < participant.getID(); };
 
-    private:
-        int id;
-        string firstName;
-        string lastName;
+private:
+    int id;
+    string firstName;
+    string lastName;
 };
 #endif
