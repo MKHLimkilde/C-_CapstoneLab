@@ -13,7 +13,7 @@ class Workshop
     public: 
         Workshop( int theNumber, std::string theTitle, int theHours, 
             int theCapacity, double thePrice) 
-                : theNumber(theNumber), theTitle(theTitele), 
+                : theNumber(theNumber), theTitle(theTitle), 
                     theHours(theHours), theCapacity(theCapacity),
                     thePrice(thePrice)  {}
             
