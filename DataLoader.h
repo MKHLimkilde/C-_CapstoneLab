@@ -10,11 +10,13 @@
 #ifndef DATALOADER_H
 #define DATALOADER_H
 
+#include <string> 
+#include "WorkshopList.h"
 
 class DataLoader
 {
   public: 
-          static void loadWorkshops(WorkshopList workshopList, string filename);
+          static void loadWorkshops(WorkshopList workshopList, std::string filename);
 }
 
 #endif
