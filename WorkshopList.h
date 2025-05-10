@@ -11,17 +11,15 @@
 #define WORKSHOPLIST_H
 
 #include <string>
-
 #include <set>
-
 #include <iostream>
 
 class WorkshopList
 {
 	public:
 
-		void addWorkshop(Workshop workshop);
-		int getNumber(Workshop workshop) const;
+		void addWorkshop(const Workshop& workshop);
+		int getNumber(const Workshop& workshop) const;
 		std::string getTitle(int workshopNo) const;
 		int getHours(int workshopNo) const;
 		int getCapacity(int workshopNo) const;
@@ -30,9 +28,7 @@ class WorkshopList
 		void clearList();
 
 	private:
-		
-		set<Workshop>::iterator findByNumber(int workshopNo);
-
-
+		std::set<Workshop> workshops;
+		std::set<Workshop>::iterator findByNumber(int workshopNo);
 };
 #endif
