@@ -5,6 +5,7 @@
 #include "DataLoader.h"
 #include <fstream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -12,23 +13,28 @@ void DataLoader::loadWorkshops(WorkshopList workshopList, string filename)
 {
     ifstream file(filename);
 
-    if (!file.is_open())  { return; }
+    if (!file.is_open())  
+    { 
+        cerr << "Error opening file" << endl; 
+        return;
+    }
 
     string line;
     while(getline(file,line))
     {
-        stringstreams ss(line);
-        int number, capacity, hour;
-        double price;
-        string title;
+        stringstream ss(line);
+        string numberStr, title, hoursStr, capacityStr, priceStr;
 
-        ss >> number;
-        getline(ss, title, '|');
-        ss >> hour;
-        ss.ignore(1);
-        ss >> capacity;
-        ss.ignore(1);
-        ss >> price;
+        std::getline(ss, numberStr, '|');
+        std::getline(ss, title, '|');
+        std::getline(ss, hoursStr, '|');
+        std::getline(ss, capacityStr, '|');
+        std::getline(ss, priceStr, '|');
+
+        int number = std::stoi(numberStr);
+        int hours = std::stoi(hoursStr);
+        int capacity = std::stoi(capacityStr);
+        double price = std::stod(priceStr);
 
         Workshop workshop(number, title, hours, capacity, price);
         workshopList.addWorkshop(workshop);
