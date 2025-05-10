@@ -18,6 +18,6 @@ class DataLoader
 {
   public: 
           static void loadWorkshops(WorkshopList workshopList, std::string filename);
-}
+};
 
 #endif
