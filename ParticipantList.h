@@ -21,7 +21,7 @@ class ParticipantList
 	public:
 		void addParticipant(const Participant& participant);
 		void addWorkshopToParticipant(const Participant& participant, const Workshop& workshop);
-		int getID(Participant participant) const;
+		int getID(const Participant& participant) const;
 		std::string getFirstName(int participantID) const;
 		std::string getLastName(int participantID) const;
 		std::vector<Workshop> getWorkshops(int participantID) const;
