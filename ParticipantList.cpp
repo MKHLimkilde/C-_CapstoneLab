@@ -1,35 +1,74 @@
+/*
+    Ayala, Ruben
+
+    Spring 2025
+    CS A250 - C++ 2
+    ParticipantList.cpp
+*/
+
 #include "ParticipantList.h"
 
-#include "Participant.h"
-#include <iostream>
-#include <vector> 
-
-void addParticipant(Participant participant)
+void ParticipantList::addParticipant(const Participant& participant)
 {
-	participant.insert();
+	participantMap[participant] = {};
 }
 
-void addWorkshopToParticipant(Participant participant, Workshop workshop)
+void ParticipantList::addWorkshopToParticipant(const Participant& participant, const Workshop& workshop)
 {
-	participant.push_back(workshop); //Not correct 
+	participantMap[participant].push_back(workshop); 
 }
 
-int getID(Participant participant)
+int ParticipantList::getID(const Participant& participant) const
 {
 	return participant.id;
 }
 
-std::string getFirstName(int participantID)
+std::string ParticipantList::getFirstName(int participantID) const
 {
-	return participantID.first_name;
+	for (const auto& [participant, workshops] : participantList)
+	{
+		if (participant.id == participantID)
+		{
+			return participant.firstName;
+		}
+	}
 }
 
-std::string getLastName(int participantID)
+std::string ParticipantList::getLastName(int participantID) const
 {
-	return participantID.last_name;
+	for (const auto& [participant, workshops] : participantList)
+	{
+		if (participant.id == participantID)
+		{
+			return participant.lastName;
+		}
+	}
 }
-vector<Workshop> getWorkshops(int participantID);
-void clearList();
 
-		findByID(int participantID) :
-			map<Participant, vector<Workshop>>::const_iterator
+std::vector<Workshop> ParticipantList::getWorkshops(int participantID) const
+{
+	for (const auto& [participant, workshops] : participantList)
+	{
+		if (participant.id == participantID)
+		{
+			return workshops;
+		}
+	}
+}
+
+void clearList()
+{
+	participantList.clear();
+}
+
+
+std::map<Participant, std::vector<Workshop>>::const_iterator ParticipantList::findByID(int participantID) const
+{
+	for (auto mapIt = participantList.begin(); it != participantList.end(); ++mapIt)
+	{
+		if (mapIt->first.id == participantID)
+		{
+			return mapIt;
+		}
+	}
+}
