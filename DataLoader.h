@@ -12,6 +12,7 @@
 
 #include <string> 
 #include "WorkshopList.h"
+#include "Workshop.h"
 
 class DataLoader
 {
