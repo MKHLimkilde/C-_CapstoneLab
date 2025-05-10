@@ -12,8 +12,11 @@ class Workshop
 {
     public: 
         Workshop( int theNumber, std::string theTitle, int theHours, 
-            int theCapacity, double thePrice);
-
+            int theCapacity, double thePrice) 
+                : theNumber(theNumber), theTitle(theTitele), 
+                    theHours(theHours), theCapacity(theCapacity),
+                    thePrice(thePrice)  {}
+            
         int getNumber() const { return theNumber; }
         std::string getTitle() const { return theTitle; }
         int getHours() const { return theHours; }
