@@ -12,49 +12,49 @@
 class WorkshopList
 {
 
-	void addWorkshop(Workshop workshop workshopName)
+	void WorkshopList::addWorkshop(Workshop workshop)
 	{
-		this.insert();
+		workshops.insert(workshop);
 	};
 
-	int getNumber(Workshop workshop)
+	int WorkshopList::getNumber(Workshop workshop)
 	{
-		return workshop.number;
+		return workshop.theNumber;
 	};
 
-	std::string getTitle(int workshopNo)
+	std::string WorkshopList::getTitle(int workshopNo)
 	{
-		return workshop.title;
+		return workshop.theTitle;
 	};
 
-	int getHours(int workshopNo)
+	int WorkshopList::getHours(int workshopNo)
 	{
-		return workshop.hours;
+		return workshop.theHours;
 	};
 
-	int getCapacity(int workshopNo)
+	int WorkshopList::getCapacity(int workshopNo)
 	{
-		return workshopNo.capacity;
+		return workshopNo.theCapacity;
 	};
 
-	double getPrice(double workshopNo)
+	double WorkshopList::getPrice(double workshopNo)
 	{
-		return workshopNo.price;
+		return workshopNo.thePrice;
 	};
 
-	bool isEmpty()
+	bool WorkshopList::isEmpty()
 	{
-		return (count < 1);
+		return workshops.empty();
 	};
 
-	void clearList()
+	void WorkshopList::clearList()
 	{
-
+		workshops.clear();
 	};
 
-	set<Workshop>::iterator findByNumber(int workshopNo)
+	set<Workshop>::iterator WorkshopList::findByNumber(int workshopNo)
 	{
-
+		return workshops.find(Workshop{workshopNo, "", 0, 0, 0.0});
 	};
 
 
