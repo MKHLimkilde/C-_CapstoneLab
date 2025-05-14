@@ -4,31 +4,75 @@
 	Spring 2025
 	CS A250 - C++ 2
 
-	WorkshopList.h
+	WorkshopList.cpp
 */
 
-#ifndef WORKSHOPLIST_H
-#define WORKSHOPLIST_H
+#include "WorkshopList.h"
+#include "Workshop.h"  // Include the full definition of the Workshop class
+#include <algorithm>
 
-#include <set>
-#include "Workshop.h"  // Make sure this is included here
+void WorkshopList::addWorkshop(const Workshop& workshop)
+{
+    workshopList.insert(workshop);
+}
 
-class WorkshopList {
-public:
-    void addWorkshop(const Workshop& workshop);
-    int getNumber(const Workshop& workshop) const;
-    std::string getTitle(int workshopNo) const;
-    int getHours(int workshopNo) const;
-    int getCapacity(int workshopNo) const;
-    double getPrice(int workshopNo) const;
-    const Workshop& getWorkshop(int workshopNo) const; // new function for part B
-    const std::set<Workshop>& getAllWorkshops() const; // new function for part B
-    bool isEmpty() const;
-    void clearList();
+int WorkshopList::getNumber(const Workshop& workshop) const
+{
+    return workshop.getNumber();
+}
 
-private:
-    std::set<Workshop> workshopList;
-    std::set<Workshop>::const_iterator findByNumber(int workshopNo) const;
-};
+std::string WorkshopList::getTitle(int workshopNo) const
+{
+    auto workshopIt = findByNumber(workshopNo);
+    return workshopIt->getTitle();
+}
 
-#endif
+int WorkshopList::getHours(int workshopNo) const
+{
+    auto workshopIt = findByNumber(workshopNo);
+    return workshopIt->getHours();
+}
+
+int WorkshopList::getCapacity(int workshopNo) const
+{
+    auto workshopIt = findByNumber(workshopNo);
+    return workshopIt->getCapacity();
+}
+
+double WorkshopList::getPrice(int workshopNo) const
+{
+    auto workshopIt = findByNumber(workshopNo);
+    return workshopIt->getPrice();
+}
+
+bool WorkshopList::isEmpty() const
+{
+    return workshopList.empty();
+}
+
+void WorkshopList::clearList()
+{
+    workshopList.clear();
+}
+
+
+std::set<Workshop>::const_iterator WorkshopList::findByNumber(int workshopNo) const
+{
+    return std::find_if(
+        workshopList.begin(), workshopList.end(),
+        [workshopNo](const Workshop& w) {
+            return w.getNumber() == workshopNo;
+        });
+}
+
+const Workshop& WorkshopList::getWorkshop(int workshopNo) const // new function for part B
+{
+    auto workshopIt = findByNumber(workshopNo);
+
+    return *workshopIt;
+}
+
+const std::set<Workshop>& WorkshopList::getAllWorkshops() const // new function for part B
+{
+    return workshopList;
+}
