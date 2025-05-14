@@ -4,55 +4,31 @@
 	Spring 2025
 	CS A250 - C++ 2
 
-	Participant
+	WorkshopList.h
 */
 
-#include "WorkshopList.h"
+#ifndef WORKSHOPLIST_H
+#define WORKSHOPLIST_H
 
-void WorkshopList::addWorkshop(const Workshop& workshop)
-{
-	workshops.insert(workshop);
+#include <set>
+#include "Workshop.h"  // Make sure this is included here
+
+class WorkshopList {
+public:
+    void addWorkshop(const Workshop& workshop);
+    int getNumber(const Workshop& workshop) const;
+    std::string getTitle(int workshopNo) const;
+    int getHours(int workshopNo) const;
+    int getCapacity(int workshopNo) const;
+    double getPrice(int workshopNo) const;
+    const Workshop& getWorkshop(int workshopNo) const; // new function for part B
+    const std::set<Workshop>& getAllWorkshops() const; // new function for part B
+    bool isEmpty() const;
+    void clearList();
+
+private:
+    std::set<Workshop> workshopList;
+    std::set<Workshop>::const_iterator findByNumber(int workshopNo) const;
 };
 
-int WorkshopList::getNumber(const Workshop& workshop) const
-{
-	return workshop.theNumber;
-};
-
-std::string WorkshopList::getTitle(int workshopNo) const
-{
-	return workshop.theTitle;
-};
-
-int WorkshopList::getHours(int workshopNo) const
-{
-	auto workshopIt = findByNumber(workshopNo);
-	return workshopIt->theHours;
-};
-
-int WorkshopList::getCapacity(int workshopNo) const
-{
-	auto workshopIt = findByNumber(workshopNo);
-	return workshopIt->theCapacity;
-};
-
-double WorkshopList::getPrice(double workshopNo) const
-{
-	auto workshopIt = findByNumber(workshopNo);
-	return workshopIt->thePrice;
-};
-
-bool WorkshopList::isEmpty()
-{
-	return workshops.empty();
-};
-
-void WorkshopList::clearList()
-{
-	workshops.clear();
-};
-
-set<Workshop>::iterator WorkshopList::findByNumber(int workshopNo)
-{
-	return workshops.find(Workshop{workshopNo, "", 0, 0, 0.0});
-};
+#endif
